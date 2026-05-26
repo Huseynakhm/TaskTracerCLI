@@ -2,6 +2,7 @@
 ## Project Overview
 
 This program is a lightweight, local **Task Tracker Command Line Interface (CLI)** that runs directly inside your terminal. It operates as a self-contained personal database assistant, allowing you to manage and organize a dynamic to-do list using simple, single-word terminal inputs.
+**Project URL: https://roadmap.sh/projects/task-tracker**
 
 ### What the Program Can Do:
 
@@ -27,3 +28,5 @@ To use this application globally in your terminal as `task-cli`, follow these qu
    ```bash
    alias task-cli="python3 /path/to/your/cloned/repo/task-cli.py"
 4. Restart your terminal or run source ~/.zshrc.
+
+
