@@ -18,15 +18,25 @@ This program is a lightweight, local **Task Tracker Command Line Interface (CLI)
 * **Delete (`delete`)**: Permanently wipes out an existing task using its unique ID number and cleanly updates the tracking list.
 
 
-### Installation & Setup
+### Installation & Setup for UNIX based systems
 
 To use this application globally in your terminal as `task-cli`, follow these quick steps:
 
 1. Clone this repository to your local machine.
-2. Open your shell configuration profile (usually `~/.zshrc` or `~/.bashrc`).
-3. Add the following alias to the bottom of the file, pointing to your downloaded path:
+2. Open your terminal
+3. Open your shell configuration profile (usually `nano ~/.zshrc` or `nano ~/.bashrc`).
+4. Add the following alias to the bottom of the file, pointing to your downloaded path:
    ```bash
    alias task-cli="python3 /path/to/your/cloned/repo/task-cli.py"
-4. Restart your terminal or run source ~/.zshrc.
+5. Restart your terminal or run `source ~/.zshrc`.
 
 
+### Installation & Setup for Windows
+
+To use this application globally in your terminal as `task-cli`, follow these quick steps:
+1. Clone this repository to your local machine
+2. Open PowerShell profile: `notepad $PROFILE`
+3. Add this line at the bottom:
+    ```bash
+   function task-cli { python "C:\absolute\path\to\task-cli.py" $args }
+4. Restart your PowerShell window
