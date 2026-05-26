@@ -150,51 +150,51 @@ def list_specific_status(status: str) -> None:
         print(f"Created At: {task['createdAt']} | Updated At: {task['updatedAt']}")
         print("-" * 40)
         
-        
-operation = sys.argv[1] if len(sys.argv) > 1 else None
-if operation == "add":
-    if len(sys.argv) < 3:
-        print("Error: Task description is required for 'add' operation.")
-    else:
-        add_task(sys.argv[2])
-elif operation == "update":
-    if len(sys.argv) < 4:
-        print("Error: Task ID and new description are required for 'update' operation.")
-    else:
-        try:
-            task_id = int(sys.argv[2])
-            new_description = sys.argv[3]
-            update_task(task_id, new_description)
-        except ValueError:
-            print("Error: Task ID must be a valid integer.")
-elif operation == "delete":
-    if len(sys.argv) < 3:
-        print("Error: Task ID is required for 'delete' operation.")
-    else:
-        try:
-            task_id = int(sys.argv[2])
-            delete_task(task_id)
-        except ValueError:
-            print("Error: Task ID must be a valid integer.")
-elif "mark-" in operation:
-    if len(sys.argv) < 3:
-        print("Error: Status and Task ID are required for 'status' operation.")
-    else:
-        try:
-            status = sys.argv[1]
+if __name__ == "__main__":
+    operation = sys.argv[1] if len(sys.argv) > 1 else None
+    if operation == "add":
+        if len(sys.argv) < 3:
+            print("Error: Task description is required for 'add' operation.")
+        else:
+            add_task(sys.argv[2])
+    elif operation == "update":
+        if len(sys.argv) < 4:
+            print("Error: Task ID and new description are required for 'update' operation.")
+        else:
+            try:
+                task_id = int(sys.argv[2])
+                new_description = sys.argv[3]
+                update_task(task_id, new_description)
+            except ValueError:
+                print("Error: Task ID must be a valid integer.")
+    elif operation == "delete":
+        if len(sys.argv) < 3:
+            print("Error: Task ID is required for 'delete' operation.")
+        else:
+            try:
+                task_id = int(sys.argv[2])
+                delete_task(task_id)
+            except ValueError:
+                print("Error: Task ID must be a valid integer.")
+    elif "mark-" in operation:
+        if len(sys.argv) < 3:
+            print("Error: Status and Task ID are required for 'status' operation.")
+        else:
+            try:
+                status = sys.argv[1]
+                status = status.replace("mark-", "").replace("-", " ")
+                task_id = int(sys.argv[2])
+                change_status(status, task_id)
+            except ValueError:
+                print("Error: Task ID must be a valid integer.")
+    elif operation == "list":
+        if len(sys.argv) == 2:
+            list_all_tasks()
+        elif len(sys.argv) == 3:
+            status = sys.argv[2]
             status = status.replace("mark-", "").replace("-", " ")
-            task_id = int(sys.argv[2])
-            change_status(status, task_id)
-        except ValueError:
-            print("Error: Task ID must be a valid integer.")
-elif operation == "list":
-    if len(sys.argv) == 2:
-        list_all_tasks()
-    elif len(sys.argv) == 3:
-        status = sys.argv[2]
-        status = status.replace("mark-", "").replace("-", " ")
-        list_specific_status(status)
+            list_specific_status(status)
+        else:
+            print("Error: Too many arguments for 'list' operation.")
     else:
-        print("Error: Too many arguments for 'list' operation.")
-else:
-    print("Invalid operation. Available operations: add, update, delete, mark-<status>, list [<status>].")
+        print("Invalid operation. Available operations: add, update, delete, mark-<status>, list [<status>].")
